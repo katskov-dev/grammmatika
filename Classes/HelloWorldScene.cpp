@@ -100,26 +100,7 @@ bool HelloWorld::init()
     
 
 	
-	 my_hero = new Hero(this, "MyHero1");
-
-	auto hero = Node::create();
-	addChild(hero, 0, "hero");
-
-	
-	auto heroSprite = Sprite::create("qq/Extra_animations_and_enemies/Alien_sprites/alienBeige.png");
-	heroSprite->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
-	hero->addChild(heroSprite, 0, "sprite");
-
-	
-
-	// теперь давайте анимируем спрайт
-	
-	animFrames.reserve(2);
-
-	animFrames.pushBack(SpriteFrame::create("qq/Extra_animations_and_enemies/Alien_sprites/alienBeige_walk1.png", Rect(0, 0, 55, 73)));
-	animFrames.pushBack(SpriteFrame::create("qq/Extra_animations_and_enemies/Alien_sprites/alienBeige_walk2.png", Rect(0, 0, 55, 73)));
-	
-	
+	hero = new Hero(this, "MyHero1"); // Создаем героя и сразу привязываем его к сцене или другой ноде
 
 
 	//1-ый батон
@@ -127,116 +108,33 @@ bool HelloWorld::init()
 	move_to_up->setTitleText("Up");
 	move_to_up->setPosition(Point(200, 300));
 	
-	move_to_up->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_up, my_hero));
-	
+	move_to_up->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_up, hero));
+	//button1->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_up, this));
+	/*move_to_up->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type)
+	{
+		this->my_hero->animation_move_to_up(sender, type);
+	});*/
 	this->addChild(move_to_up);
 
 	//2-ой батон
 	auto button2 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button2->setTitleText("Down");
 	button2->setPosition(Point(200, 100));
-	button2->addTouchEventListener([hero](Ref* sender, ui::Widget::TouchEventType type)
-	{
-		switch (type)
-		{
-		case ui::Widget::TouchEventType::BEGAN: {
-			Animation* animation;
-			Animate* animate;
-			// создает анимацию из кадров
-			animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
-			animate = Animate::create(animation);
-			// Двигает спрайт на 50 пикселей вверх за 2 секунды.
-			auto moveByUp = MoveBy::create(0.2, Vec2(0, 50)); //вверх
-			auto moveByDw = MoveBy::create(0.2, Vec2(0, -50)); //вниз
-			auto moveByLt = MoveBy::create(0.2, Vec2(-50, 0)); //влево
-			auto moveByRt = MoveBy::create(0.2, Vec2(0, 50)); //вправо
-
-			hero->getChildByName("sprite")->runAction(moveByDw);
-			//Hero->setPosition(Point(700,500));
-			hero->getChildByName("sprite")->runAction(Repeat::create(animate, 1));
-
-		}
-		break;
-
-		case ui::Widget::TouchEventType::ENDED:
-			//std::cout << "Button 1 clicked" << std::endl;
-			break;
-		default:
-			break;
-		}
-	});
+	
 	this->addChild(button2);
 
 	//3-ий батон
 	auto button3 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button3->setTitleText("Left");
 	button3->setPosition(Point(100, 200));
-	button3->addTouchEventListener([hero](Ref* sender, ui::Widget::TouchEventType type)
-	{
-		switch (type)
-		{
-		case ui::Widget::TouchEventType::BEGAN: {
-			Animation* animation;
-			Animate* animate;
-			// создает анимацию из кадров
-			animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
-			animate = Animate::create(animation);
-			// Двигает спрайт на 50 пикселей вверх за 2 секунды.
-			auto moveByUp = MoveBy::create(0.2, Vec2(0, 50)); //вверх
-			auto moveByDw = MoveBy::create(0.2, Vec2(0, -50)); //вниз
-			auto moveByLt = MoveBy::create(0.2, Vec2(-50, 0)); //влево
-			auto moveByRt = MoveBy::create(0.2, Vec2(0, 50)); //вправо
-
-			hero->getChildByName("sprite")->runAction(moveByLt);
-			//Hero->setPosition(Point(700,500));
-			hero->getChildByName("sprite")->runAction(Repeat::create(animate, 1));
-
-		}
-		break;
-
-		case ui::Widget::TouchEventType::ENDED:
-			//std::cout << "Button 1 clicked" << std::endl;
-			break;
-		default:
-			break;
-		}
-	});
+	
 	this->addChild(button3);
 
 	//4-ый батон
 	auto button4 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button4->setTitleText("Right");
 	button4->setPosition(Point(300, 200));
-	button4->addTouchEventListener([hero](Ref* sender, ui::Widget::TouchEventType type)
-	{
-		switch (type)
-		{
-		case ui::Widget::TouchEventType::BEGAN: {
-			Animation* animation;
-			Animate* animate;
-			// создает анимацию из кадров
-			animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
-			animate = Animate::create(animation);
-			// Двигает спрайт на 50 пикселей вверх за 2 секунды.
-			auto moveByUp = MoveBy::create(0.2, Vec2(0, 50)); //вверх
-			auto moveByDw = MoveBy::create(0.2, Vec2(0, -50)); //вниз
-			auto moveByLt = MoveBy::create(0.2, Vec2(-50, 0)); //влево
-			auto moveByRt = MoveBy::create(0.2, Vec2(50, 0)); //вправо
-
-			hero->getChildByName("sprite")->runAction(moveByRt);
-			//Hero->setPosition(Point(700,500));
-			hero->getChildByName("sprite")->runAction(Repeat::create(animate, 1));
-
-		}
-		break;
-
-		case ui::Widget::TouchEventType::ENDED:
-			//std::cout << "Button 1 clicked" << std::endl;
-			break;
-		default:
-			break;
-		}
-	});
+	
 	this->addChild(button4);
 
 

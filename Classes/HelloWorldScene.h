@@ -49,7 +49,7 @@ public:
 	ui::Button* move_to_down;
 	ui::Button* move_to_left;
 	ui::Button* move_to_right;
-	Hero* my_hero;
+	Hero* hero;
 	
 };
 
