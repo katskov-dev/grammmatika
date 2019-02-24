@@ -23,7 +23,6 @@ bool MainMenuScene::init()
 	
 	menu = Menu::create(menu_play_label, menu_options_label, menu_exit_label, nullptr); //Создание меню из "элемнтов меню"
 	menu->alignItemsVerticallyWithPadding(30); // Вертикальное выравнивание элементов с отступом в 30 пикселей
-	//menu->alignItemsHorizontallyWithPadding(15);
 	this->addChild(menu, 1);
 	
 	

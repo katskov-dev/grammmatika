@@ -27,7 +27,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-
+#include "Hero.h"
 USING_NS_CC;
 
 class HelloWorld : public cocos2d::Scene
@@ -45,6 +45,8 @@ public:
     CREATE_FUNC(HelloWorld);
 public:
 	ui::Button* back_to_menu_button;
+	Hero* my_hero;
+	
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -25,6 +25,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "ui/CocosGUI.h"
+#include "Hero.h"
 
 USING_NS_CC;
 
@@ -55,7 +56,7 @@ bool HelloWorld::init()
     {
         return false;
     }
-
+	
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -98,8 +99,8 @@ bool HelloWorld::init()
     /////////////////////////////
     
 
-
 	
+	 my_hero = new Hero(this, "MyHero1");
 
 	auto hero = Node::create();
 	addChild(hero, 0, "hero");
@@ -126,41 +127,9 @@ bool HelloWorld::init()
 	button1->setTitleText("Up");
 	button1->setPosition(Point(200, 300));
 	
-	button1->addTouchEventListener([hero](Ref* sender, ui::Widget::TouchEventType type)
+	button1->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type)
 	{
-		switch (type)
-		{
-		case ui::Widget::TouchEventType::BEGAN: {
-			Animation* animation;
-			Animate* animate;
-			// создает анимацию из кадров
-			animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
-			animate = Animate::create(animation);
-			// Двигает спрайт на 50 пикселей вверх за 2 секунды.
-			auto moveByUp = MoveBy::create(0.2, Vec2(0, 50)); //вверх
-			auto moveByDw = MoveBy::create(0.2, Vec2(0, -50)); //вниз
-			auto moveByLt = MoveBy::create(0.2, Vec2(-50, 0)); //влево
-			auto moveByRt = MoveBy::create(0.2, Vec2(0, 50)); //вправо
-			auto rotateTo = RotateBy::create(0.2f, 360.0f);
-			//hero->getChildByName("sprite")->runAction(rotateTo);
-
-			auto spawn = Spawn::createWithTwoActions(moveByUp, rotateTo);
-
-			hero->getChildByName("sprite")->runAction(spawn);
-			//Hero->setPosition(Point(700,500));
-			hero->getChildByName("sprite")->runAction(Repeat::create(animate, 1));
-
-			
-			
-			}
-			break;
-
-		case ui::Widget::TouchEventType::ENDED:
-			//std::cout << "Button 1 clicked" << std::endl;
-			break;
-		default:
-			break;
-		}
+		this->my_hero->animation_move_to_up(sender, type);
 	});
 	this->addChild(button1);
 
