@@ -2,12 +2,10 @@
 #include "ui/CocosGUI.h"
 
 
-Hero::Hero(Node * parent, String name)
+Hero::Hero(String name)
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	parent->addChild(this, 0, name.getCString());
 	heroSprite = Sprite::create("qq/Extra_animations_and_enemies/Alien_sprites/alienBeige.png");
 	heroSprite->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
 	this->addChild(heroSprite, 0, "sprite");

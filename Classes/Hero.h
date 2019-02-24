@@ -7,7 +7,7 @@ using namespace cocos2d;
 class Hero: public Node // Наш класс тоже элемент сцены
 {
 public:
-	Hero(Node* parent, String name); 
+	Hero(String name); 
 	~Hero();
 
 	void animation_move_to_up(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вверх
