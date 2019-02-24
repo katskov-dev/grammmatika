@@ -45,6 +45,10 @@ public:
     CREATE_FUNC(HelloWorld);
 public:
 	ui::Button* back_to_menu_button;
+	ui::Button* move_to_up;
+	ui::Button* move_to_down;
+	ui::Button* move_to_left;
+	ui::Button* move_to_right;
 	Hero* my_hero;
 	
 };

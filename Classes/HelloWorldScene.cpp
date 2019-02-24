@@ -123,15 +123,13 @@ bool HelloWorld::init()
 
 
 	//1-ый батон
-	auto button1 = ui::Button::create("qq/Base_pack/Items/bomb.png");
-	button1->setTitleText("Up");
-	button1->setPosition(Point(200, 300));
+	move_to_up = ui::Button::create("qq/Base_pack/Items/bomb.png");
+	move_to_up->setTitleText("Up");
+	move_to_up->setPosition(Point(200, 300));
 	
-	button1->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type)
-	{
-		this->my_hero->animation_move_to_up(sender, type);
-	});
-	this->addChild(button1);
+	move_to_up->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_up, my_hero));
+	
+	this->addChild(move_to_up);
 
 	//2-ой батон
 	auto button2 = ui::Button::create("qq/Base_pack/Items/bomb.png");

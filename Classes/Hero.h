@@ -4,17 +4,17 @@
 
 using namespace cocos2d;
 
-class Hero
+class Hero: public Node // Наш класс тоже элемент сцены
 {
 public:
-	Hero(Scene* scene, String name);
+	Hero(Scene* scene, String name); 
 	~Hero();
 
-	void animation_move_to_up(Ref * sender, ui::Widget::TouchEventType type);
+	void animation_move_to_up(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вверх
 
 
 	Vector<SpriteFrame*> animFrames;
-	Node* hero;
 	Sprite* heroSprite;
 };
 
+ 
