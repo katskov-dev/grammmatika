@@ -25,9 +25,7 @@ bool HelloWorld::init()
 	back_to_menu_button->setTitleText(u8"Выйти в главное меню");
 	back_to_menu_button->setTitleFontSize(28);
 	back_to_menu_button->setPosition(Vec2(back_to_menu_button->getSize().width / 2.0 + 15, visibleSize.height - back_to_menu_button->getSize().height - 5));
-	back_to_menu_button->addTouchEventListener(CC_CALLBACK_2(HelloWorld::back_to_menu_button_onClick, this));
-
-    
+	back_to_menu_button->addTouchEventListener(CC_CALLBACK_2(HelloWorld::back_to_menu_button_onClick, this));  
 
 	
 	hero = new Hero("MyHero1"); // Создаем героя и сразу привязываем его к сцене или другой ноде
@@ -46,6 +44,7 @@ bool HelloWorld::init()
 	auto button2 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button2->setTitleText("Down");
 	button2->setPosition(Point(200, 100));
+	button2->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_down, hero));
 	
 	this->addChild(button2);
 

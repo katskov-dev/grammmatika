@@ -11,6 +11,7 @@ public:
 	~Hero();
 
 	void animation_move_to_up(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вверх
+	void animation_move_to_down(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вверх
 
 
 	Vector<SpriteFrame*> animFrames;
