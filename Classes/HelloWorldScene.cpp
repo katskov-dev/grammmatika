@@ -52,13 +52,15 @@ bool HelloWorld::init()
 	auto button3 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button3->setTitleText("Left");
 	button3->setPosition(Point(100, 200));
-	
+	button3->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_left, hero));
+
 	this->addChild(button3);
 
 	//4-ый батон
 	auto button4 = ui::Button::create("qq/Base_pack/Items/bomb.png");
 	button4->setTitleText("Right");
 	button4->setPosition(Point(300, 200));
+	button4->addTouchEventListener(CC_CALLBACK_2(Hero::animation_move_to_right, hero));
 	
 	this->addChild(button4);
 
