@@ -14,9 +14,13 @@ public:
 	void animation_move_to_down(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вверх
 	void animation_move_to_left(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения влево
 	void animation_move_to_right(Ref * sender, ui::Widget::TouchEventType type); //обработчик для кнопки движения вправо
+	void animation_end();
 
 	Vector<SpriteFrame*> animFrames;
 	Sprite* heroSprite;
+	SpriteFrame* normal_frame;
+	Animation* animation;
+	Animate* animate;
 };
 
  
